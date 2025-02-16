@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: black;
+            color: white;
+        }
+
+        .choices {
+            margin: 20px;
+        }
+
+        button {
+            font-size: 1.5em;
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Rock, Paper, Scissors</h1>
+    <div class="choices">
+        <button onclick="playGame('rock')">🪨 Rock</button>
+        <button onclick="playGame('paper')">📄 Paper</button>
+        <button onclick="playGame('scissors')">✂️ Scissors</button>
+    </div>
+    <p id="userChoice"></p>
+    <p id="computerChoice"></p>
+    <p class="result" id="result"></p>
+
+    <script>
+        function playGame(userChoice) {
+            const choices = ["rock", "paper", "scissors"];
+            const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+            document.getElementById("userChoice").textContent = `You chose: ${userChoice}`;
+            document.getElementById("computerChoice").textContent = `Computer chose: ${computerChoice}`;
+
+            let result;
+            if (userChoice === computerChoice) {
+                result = "It's a Draw! 😐";
+            } else if (
+                (userChoice === "rock" && computerChoice === "scissors") ||
+                (userChoice === "paper" && computerChoice === "rock") ||
+                (userChoice === "scissors" && computerChoice === "paper")
+            ) {
+                result = "You Win! 🎉";
+            } else {
+                result = "You Lose! 😢";
+            }
+
+            document.getElementById("result").textContent = result;
+        }
+    </script>
+
+</body>
+</html>
