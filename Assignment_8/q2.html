@@ -1,1 +1,89 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Form Validation</title>
+</head>
+<body>
+
+    <h2>Sign-Up Form</h2>
+    <form onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" oninput="validateName()" style="border: 2px solid gray;">
+        <small id="nameError" style="color: red;"></small>
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" oninput="validateEmail()" style="border: 2px solid gray;">
+        <small id="emailError" style="color: red;"></small>
+        <br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" oninput="validatePassword()" style="border: 2px solid gray;">
+        <small id="passwordError" style="color: red;"></small>
+        <br><br>
+
+        <button type="submit">Sign Up</button>
+    </form>
+
+    <script>
+        function validateName() {
+            let name = document.getElementById("name").value;
+            let error = document.getElementById("nameError");
+            let inputField = document.getElementById("name");
+
+            if (name.trim() === "") {
+                error.textContent = "Name must not be empty.";
+                inputField.style.border = "2px solid red";
+                return false;
+            } else {
+                error.textContent = "";
+                inputField.style.border = "2px solid green";
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            let email = document.getElementById("email").value;
+            let error = document.getElementById("emailError");
+            let inputField = document.getElementById("email");
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(email)) {
+                error.textContent = "Enter a valid email.";
+                inputField.style.border = "2px solid red";
+                return false;
+            } else {
+                error.textContent = "";
+                inputField.style.border = "2px solid green";
+                return true;
+            }
+        }
+
+        function validatePassword() {
+            let password = document.getElementById("password").value;
+            let error = document.getElementById("passwordError");
+            let inputField = document.getElementById("password");
+            let passwordPattern = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+            if (!passwordPattern.test(password)) {
+                error.textContent = "Password must be 8+ chars, 1 uppercase & 1 number.";
+                inputField.style.border = "2px solid red";
+                return false;
+            } else {
+                error.textContent = "";
+                inputField.style.border = "2px solid green";
+                return true;
+            }
+        }
+
+        function validateForm() {
+            let isValid = validateName() && validateEmail() && validatePassword();
+            return isValid; // Form submits only if all validations pass
+        }
+    </script>
+
+</body>
+</html>
