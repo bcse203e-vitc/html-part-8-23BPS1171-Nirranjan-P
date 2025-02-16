@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show/Hide Password</title>
+</head>
+<body>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password">
+    <input type="checkbox" id="togglePassword" onclick="togglePasswordVisibility()"> Show Password
+
+    <script>
+        function togglePasswordVisibility() {
+            let passwordField = document.getElementById("password");
+            passwordField.type = document.getElementById("togglePassword").checked ? "text" : "password";
+        }
+    </script>
+
+</body>
+</html>
