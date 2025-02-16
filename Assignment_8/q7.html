@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Press Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            flex-direction: column;
+        }
+
+        #keyDisplay {
+            font-size: 2em;
+            font-weight: bold;
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            text-align: center;
+            min-width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Press any key</h2>
+    <div id="keyDisplay">Waiting...</div>
+
+    <script>
+        document.addEventListener("keydown", function(event) {
+            document.getElementById("keyDisplay").textContent = `Key Pressed: ${event.key}`;
+        });
+    </script>
+
+</body>
+</html>
